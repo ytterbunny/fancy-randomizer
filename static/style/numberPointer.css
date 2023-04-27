@@ -5,6 +5,8 @@
     display: grid;
     align-items: center;
     justify-content: center;
+    top: -250px;
+    left: calc(50% - 50px);
 }
 
 body .pointerBody {

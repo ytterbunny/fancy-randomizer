@@ -97,18 +97,12 @@ function enableInput() {
 
 $(document).ready(function(){
 
-    var windowHeight = $( window ).height();
-    $("#numListOuter").css("top", windowHeight*0.45 - $("#numListOuter").height());
-    $("#rippleNumsOuter").css("top", windowHeight*0.40 - $("#rippleNums").height());
-
     $("#randomButton").click(function(){
 
         if (numPosition == null) {
-            var windowWidth = $( window ).width();
-            numPointerTop = -$("#numPointer").height();
-            numPointerLeft = windowWidth*0.5 - $("#numPointer").width()
-            $("#numPointer").css("top", numPointerTop);
-            $("#numPointer").css("left", numPointerLeft);
+
+            numPointerTop = $("#numPointer").css("top");
+            numPointerLeft = $("#numPointer").css("left");
 
             numPosition = {
                 0: {id:"#num0", position:$("#num0").offset()},
@@ -129,13 +123,21 @@ $(document).ready(function(){
             }
         }
 
+        // get/default min/max
+        var min = Math.ceil($("#fromNum").val())
+        var max = Math.floor($("#toNum").val())
+        if (min == null || min == "" || min < 0) {
+            min = 1;
+            $("#fromNum").val(min);
+        }
+        if (max == null || max == "" || min < 2) {
+            max = 100;
+            $("#toNum").val(max);
+        }
+
         // clear random number
         $("#randomResult").html('<span style="font-family: ShineDemo; font-size: 20px">+++</span>');
         disableInput();
-
-        // calculate random
-        var min = Math.ceil($("#fromNum").val())
-        var max = Math.floor($("#toNum").val())
 
         var randomNum = Math.floor(Math.random() * (max - min + 1) + min);
 
