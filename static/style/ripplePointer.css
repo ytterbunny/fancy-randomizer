@@ -1,0 +1,26 @@
+
+@keyframes ripple-mo {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+.ripplePointerAnimate {
+  animation: ripple-mo 1s cubic-bezier(0, 0, 0.8, 1);
+}
+
+.ripplePointer {
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  transform: scale(0);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  z-index: 3;
+}

@@ -1,0 +1,312 @@
+@font-face {
+   font-family: Pwchristmasstars;
+   src: url(../font/Pwchristmasstars.ttf);
+}
+@font-face {
+   font-family: ShineDemo;
+   src: url(../font/ShineDemo.otf);
+}
+
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+        opacity:0%;
+    }
+    to {
+        transform: translateY(0%);
+        opacity:100%;
+    }
+}
+
+@keyframes blurIn {
+    from {
+        -webkit-filter: blur(50px);
+        opacity:0;
+    }
+    to {
+        -webkit-filter: blur(0px);
+        opacity:1;
+    }
+}
+
+@keyframes glow {
+    50% {
+        text-shadow: 0 0 5px #e4d9c5;
+    }
+}
+
+.slideDown {
+    animation: slide-down 1200ms;
+    animation-delay: 5000ms;
+}
+
+body {
+    background-image: radial-gradient(circle, #21263a, #121419);
+    text-align: center;
+    margin: 0;
+    min-width: 890px;
+    color: #ccb693;
+    font-family: cursive;
+    overflow: hidden;
+}
+
+canvas {
+    background-image: radial-gradient(circle, #21263a, #121419);
+}
+
+.star {
+    font-family: ShineDemo;
+}
+
+#randomForm {
+    width: 100%;
+    background-image: linear-gradient(to top, rgba(18,20,25,0), rgba(18,20,25,1));
+    padding: 30px 0px;
+    font-size: larger;
+    opacity:0%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 8px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    animation: slide-down 1200ms;
+    animation-delay: 500ms;
+    animation-fill-mode: forwards;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+#randomForm > input {
+    color:  #ccb693;
+    background-color: #21263a;
+    border-radius: 5px;
+    border: #ccb693 1px solid;
+    font-family: serif;
+    font-size: inherit;
+}
+
+#randomForm > input[type=number] {
+    min-width: 100px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#randomForm > button {
+    background-color: #ccb693;
+    color: #21263a;
+    border-radius: 5px;
+    border: #ccb693 1px solid;
+    font-style: cursive;
+    font-size: inherit;
+    font-family: serif;
+}
+
+#randomForm > button:disabled,
+#randomForm > button[disabled]{
+    background-color: #655f5c;
+    color: #21263a;
+    border-radius: 5px;
+    border: #655f5c 1px solid;
+    font-style: cursive;
+    font-size: inherit;
+    font-family: serif;
+}
+
+#skip {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #ccb693;
+    border-radius: 3px;
+    outline: none;
+}
+
+label[for=skip] {
+    font-size: smaller;
+}
+
+#skip:checked {
+    background-color: #ccb693;
+}
+
+#numListOuter {
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    padding: 20px 0px;
+    font-family: Pwchristmasstars;
+}
+
+#numList {
+    display: grid;
+    grid-gap: 20px;
+    margin: 0px auto;
+    min-width: 890px;
+    max-width: 1200px;
+    grid-auto-flow: column;
+    justify-content: center;
+    font-size: 70px;
+    background-image: radial-gradient(circle, #ccb693, #ccb693, #96826b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#numList > div {
+    margin: 10px auto;
+    padding: 20px;
+    display: inline-grid;
+}
+
+#num0 {
+    animation: blurIn 1200ms;
+    animation-delay: 450ms;
+}
+
+#num1 {
+    animation: blurIn 1200ms;
+    animation-delay: 500ms;
+}
+
+#num2 {
+    animation: blurIn 1200ms;
+    animation-delay: 550ms;
+}
+
+#num3 {
+    animation: blurIn 1200ms;
+    animation-delay: 600ms;
+}
+
+#num4 {
+    animation: blurIn 1200ms;
+    animation-delay: 650ms;
+}
+
+#num5 {
+    animation: blurIn 1200ms;
+    animation-delay: 700ms;
+}
+
+#num6 {
+    animation: blurIn 1300ms;
+    animation-delay: 750ms;
+}
+
+#num7 {
+    animation: blurIn 1300ms;
+    animation-delay: 800ms;
+}
+
+#num8 {
+    animation: blurIn 1300ms;
+    animation-delay: 850ms;
+}
+
+#num9 {
+    animation: blurIn 1300ms;
+    animation-delay: 900ms;
+}
+
+#resultOuter {
+    width: 100%;
+    height: 240px;
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    min-width: 890px;
+}
+
+#resultLabel {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: end;
+    justify-items: center;
+    font-size: x-large;
+    background-image: radial-gradient(circle, #ccb693, #5b493f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#randomResult {
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-width: 3px;
+    border-style: solid;
+    border-image: radial-gradient(circle, #ccb693, #5b493f, #ccb693) 1;
+    opacity:100%;
+    font-size: 80px;
+    font-family: Pwchristmasstars;
+    background-image: radial-gradient(circle, #ccb693, #5b493f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#myFooter {
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    font-family: serif;
+    font-size: 15px;
+    z-index:3;
+    color:#b19d7e;
+}
+
+#myFooter > a {
+    text-decoration: none;
+    position: initial;
+}
+#myFooter > a:link,
+#myFooter > a:visited,
+#myFooter > a:hover,
+#myFooter > a:active {
+    text-decoration: none;
+    color:#b19d7e;
+}
+
+.webBorder {
+    position: fixed;
+    background-image: linear-gradient(to right, #ccb693, #5b493f);
+    z-index: 1;
+}
+
+#webBorderTop, #webBorderBottom {
+    width: 100%;
+    height: 10px;
+    background-image: linear-gradient(to right,  #5b493f, #5b493f);
+}
+
+#webBorderLeft, #webBorderRight {
+    width: 10px;
+    height: 100%;
+    background-image: linear-gradient(to top, #5b493f, #ccb693, #5b493f);
+}
+
+#webBorderTop, #webBorderLeft {
+    top: 0px;
+    left: 0px;
+}
+
+#webBorderBottom {
+    bottom: 0px;
+    left: 0px;
+}
+
+#webBorderRight {
+    top: 0px;
+    right: 0px;
+}
+

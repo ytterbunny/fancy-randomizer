@@ -1,0 +1,83 @@
+#rippleNumsOuter {
+    width: 100%;
+    z-index:2;
+    position: absolute;
+}
+
+#rippleNums {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-gap: 80px;
+}
+
+.rippleNum {
+    width: 15px;
+    height: 15px;
+    display: inline-grid;
+    border-radius:50%;
+    background: rgba(0, 0, 0, 0.8);
+    animation: rip 1s cubic-bezier(0, 0, 0.8, 1);
+    animation-fill-mode: forwards;
+    transform: scale(0);
+    opacity: 0;
+}
+
+#rippleNum1, #rippleNum3, #rippleNum5, #rippleNum7, #rippleNum9 {
+    --scale: 5;
+}
+
+#rippleNum2, #rippleNum4, #rippleNum6, #rippleNum8, #rippleNum10 {
+    --scale: 15;
+}
+
+#rippleNum1 {
+    animation-delay: 1200ms;
+}
+
+#rippleNum2 {
+    animation-delay: 1300ms;
+}
+
+#rippleNum3 {
+    animation-delay: 1400ms;
+}
+
+#rippleNum4 {
+    animation-delay: 1500ms;
+}
+
+#rippleNum5 {
+    animation-delay: 1600ms;
+}
+
+#rippleNum6 {
+    animation-delay: 1700ms;
+}
+
+#rippleNum7 {
+    animation-delay: 1800ms;
+}
+
+#rippleNum8 {
+    animation-delay: 1900ms;
+}
+
+#rippleNum9 {
+    animation-delay: 2000ms;
+}
+
+#rippleNum10 {
+    animation-delay: 2100ms;
+}
+
+@keyframes rip {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(var(--scale));
+    opacity: 0;
+  }
+}

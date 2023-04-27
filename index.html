@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schneider Ouija Theme</title>
+
+    <link rel="stylesheet" href="static/style/styles.css">
+    <link rel="stylesheet" href="static/style/star.css">
+    <link rel="stylesheet" href="static/style/followPointer.css">
+    <link rel="stylesheet" href="static/style/tooltip.css">
+    <link rel="stylesheet" href="static/style/deco.css">
+    <link rel="stylesheet" href="static/style/ripplePointer.css">
+    <link rel="stylesheet" href="static/style/rippleNumber.css">
+    <link rel="stylesheet" href="static/style/numberPointer.css">
+</head>
+<body>
+
+    <canvas></canvas>
+
+    <div class="starWheel" id="starWheelInner2"></div>
+    <div class="starWheel" id="starWheelInner1Group">
+        <div id="starWheelInner1">
+            <div class="starWheelStar" id="starWheelInner1Star1"></div>
+            <div class="starWheelStar" id="starWheelInner1Star2"></div>
+        </div>
+    </div>
+    <div class="starWheel" id="starWheelOuter1Group">
+        <div id="starWheelOuter1">
+            <div class="starWheelStar" id="starWheelOuter1Star1"></div>
+            <div class="starWheelStar" id="starWheelOuter1Star2"></div>
+        </div>
+    </div>
+
+    <div class="starWheel" id="starWheelOuter2Group">
+        <div id="starWheelOuter2">
+            <div class="starWheelStar" id="starWheelOuter2Star1"></div>
+            <div class="starWheelStar" id="starWheelOuter2Star2"></div>
+            <div class="starWheelStar" id="starWheelOuter2Star3"></div>
+            <div class="starWheelStar" id="starWheelOuter2Star4"></div>
+        </div>
+    </div>
+    <div class="starWheel" id="starWheelOuter3"></div>
+
+    <div id="resultListOuter">
+        <div id="resultListPaper">
+            <div id="resultListLabel">
+                <div style="font-size: x-small;">◇</div>
+                <div style="font-size: small;">◆</div>
+                <label>Result die Liste</label>
+                <div style="font-size: small;">◆</div>
+                <div style="font-size: x-small;">◇</div>
+            </div>
+            <div id="resultList"></div>
+        </div>
+        <div id="bookmark"></div>
+    </div>
+
+    <div class="webBorder" id="webBorderTop"></div>
+    <div class="webBorder" id="webBorderLeft"></div>
+    <div class="webBorder" id="webBorderRight"></div>
+    <div class="webBorder" id="webBorderBottom"></div>
+
+    <div id="randomForm">
+        <label for="fromNum">From:</label>
+        <input type="number" id="fromNum" min="1" max="999" value="1"/>
+        <label for="toNum">To:</label>
+        <input type="number" id="toNum" min="2" max="1000000" value="100"/>
+        <button id="randomButton" disabled>Random</button>
+        <input type="checkbox" id="skip" name="skip" value="skip">
+        <label for="skip">Skip Animation</label>
+    </div>
+
+    <div id="numListOuter">
+        <div id="numList">
+            <span class="star">+</span>
+            <div id="num0">0</div>
+            <div id="num1">1</div>
+            <div id="num2">2</div>
+            <div id="num3">3</div>
+            <div id="num4">4</div>
+            <div id="num5">5</div>
+            <div id="num6">6</div>
+            <div id="num7">7</div>
+            <div id="num8">8</div>
+            <div id="num9">9</div>
+            <span class="star">+</span>
+        </div>
+    </div>
+    <div id="rippleNumsOuter">
+        <div id="rippleNums">
+            <div class="rippleNum" id="rippleNum1"></div>
+            <div class="rippleNum" id="rippleNum2"></div>
+            <div class="rippleNum" id="rippleNum3"></div>
+            <div class="rippleNum" id="rippleNum4"></div>
+            <div class="rippleNum" id="rippleNum5"></div>
+            <div class="rippleNum" id="rippleNum6"></div>
+            <div class="rippleNum" id="rippleNum7"></div>
+            <div class="rippleNum" id="rippleNum8"></div>
+            <div class="rippleNum" id="rippleNum9"></div>
+            <div class="rippleNum" id="rippleNum10"></div>
+        </div>
+    </div>
+
+    <div id="resultOuter">
+        <div id="resultLabel">
+            <div style="font-size: small;">◇</div>
+            <div style="font-size: medium;">◆</div>
+            <label>Randomisiertes Result</label>
+            <div style="font-size: medium;">◆</div>
+            <div style="font-size: small;">◇</div>
+        </div>
+        <div id="randomResult"><span class="star" style="font-size: 20px">+++</span></div>
+    </div>
+
+    <div id="myFooter">
+        2023
+        <span data-tooltip="Hi! This is fun and challenge project.&#xa; I focused more on the animations so &#xa;the random function was bound to be simple &#xa;without validation, and I was too lazy to support other browsers than Chrome. &#xa;&#xa; Please cope with it. Thank!">
+            @ytterbunny
+        </span>
+        | Non-commercial Use
+        | Please support
+        <span data-tooltip="The most handsome, good-looking, attractive, gorgeous, fine, stunning, elegant, fanciable, &#xa;well-proportioned, hot, fit, sexy, and lovely man&#xa; in the universe. &#xa;&#xa; a.k.a. Aj. Chai">
+            Schneider Supremacy @
+        </span>
+        <a href="https://www.youtube.com/@Schneider_ARP">Youtube</a> &
+        <a href="https://twitter.com/Schneider_ARP">Twitter</a> ☺!
+    </div>
+
+    <div id="numPointer">
+        <div id="wineGlass">
+            <div class="glass"></div>
+            <div class="stem"></div>
+            <div class="base"></div>
+            <div class="stemTako"></div>
+            <div class="glassTako1"></div>
+            <div class="glassTako2"></div>
+            <span class="star">}#</span>
+        </div>
+        <div class='pointerBody face'>
+            <div class='arms'>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+            </div>
+            <div class='inner'>
+                <div class='mouth'></div>
+                <div class='glasses'></div>
+                <div class='ears'></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ripplePointer"></div>
+    <div id='speedcapture'>
+        <div class='followBody face'>
+            <div class='arms'>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+                <div class='arm'></div>
+            </div>
+            <div class='inner'>
+                <div class='mouth'></div>
+                <div class='glasses'></div>
+                <div class='ears'></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="static/script/jquery.keyframes.min.js"></script>
+    <script src="static/script/randomizer.js"></script>
+    <script src="static/script/deco.js"></script>
+    <script src="static/script/ripplePointer.js"></script>
+    <script src="static/script/star.js"></script>
+    <script src="static/script/followPointer.js"></script>
+
+</body>
+</html>
