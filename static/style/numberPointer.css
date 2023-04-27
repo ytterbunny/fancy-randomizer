@@ -34,7 +34,6 @@ body .pointerBody:before {
     filter: blur(5px);
 }
 
-
 body .pointerBody.face .arms {
     width: 80px;
     height: 10px;
@@ -56,7 +55,7 @@ body .pointerBody.face .arms .arm {
     border-left: 15px solid #a690d2;
 }
 
-    body .pointerBody.face .arms .arm:nth-of-type(1) {
+    body .pointerBody.face .arms .arm1 {
         left: -9px;
         top: -5px;
         border-radius: 0 0 100px 80px;
@@ -69,31 +68,76 @@ body .pointerBody.face .arms .arm {
         rotate: 15deg;
     }
 
-    body .pointerBody.face .arms .arm:nth-of-type(2),
-     body .pointerBody.face .arms .arm:nth-of-type(3) {
+        body .pointerBody.face .arms .arm1:before {
+            content: "";
+            position: absolute;
+            left: -3px;
+            top: 14px;
+            border-radius: 0 0 100px 142px;
+            border-bottom: 6px solid #ccb693;
+            border-right: 5px solid #ccb693;
+            border-left: none;
+            transform-origin: bottom right;
+            border-top: none;
+            height: 5px;
+            width: 25px;
+            rotate: -12deg;
+            transform: rotate(30deg);
+        }
+
+    body .pointerBody.face .arms .arm2,
+     body .pointerBody.face .arms .arm3 {
         left: 5px;
         top: 0;
         border-radius: 100px 0 0 50px;
         border-top: 15px solid #a690d2;
         border-left: 15px solid #a690d2;
     }
-    body .pointerBody.face .arms .arm:nth-of-type(2) {
+    body .pointerBody.face .arms .arm2 {
         left: 2px;
         top: -7px;
         border-radius: 100px 0 0 50px;
         rotate: 15deg;
     }
+        body .pointerBody.face .arms .arm2:before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 3px;
+            border-radius: 50px 0 0 25px;
+            border-top: 3px solid #ccb693;
+            border-left: 4px solid #ccb693;
+            transform-origin: top right;
+            transform: rotate(20deg);
+            rotate: -25deg;
+            height: 24px;
+            width: 14px;
+        }
 
-    body .pointerBody.face .arms .arm:nth-of-type(3) {
+    body .pointerBody.face .arms .arm3 {
         left: 13px;
         top: -8px;
         border-radius: 200px 0 0 80px;
         width: 20px;
         height: 35px;
     }
+        body .pointerBody.face .arms .arm3:before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 9px;
+            border-radius: 12px 0 26px 9px;
+            border-top: 2px solid #ccb693;
+            border-left: 2px solid #ccb693;
+            transform-origin: top right;
+            transform: rotate(20deg);
+            rotate: -18deg;
+            height: 24px;
+            width: 11px;
+        }
 
-    body .pointerBody.face .arms .arm:nth-of-type(5),
-    body .pointerBody.face .arms .arm:nth-of-type(4) {
+    body .pointerBody.face .arms .arm5,
+    body .pointerBody.face .arms .arm4 {
         left: auto;
         right: 9px;
         transform-origin: top left;
@@ -103,21 +147,53 @@ body .pointerBody.face .arms .arm {
         border-left: none;
     }
 
-    body .pointerBody.face .arms .arm:nth-of-type(5) {
+    body .pointerBody.face .arms .arm5 {
         left: auto;
         right: 13px;
         rotate: 8deg;
     }
+        body .pointerBody.face .arms .arm5:before {
+            content: "";
+            position: absolute;
+            left: auto;
+            top: 2px;
+            right: 0px;
+            transform-origin: top left;
+            border-radius: 0 100px 50px 0;
+            border-top: 8px solid #ccb693;
+            border-right: 8px solid #ccb693;
+            border-left: none;
+            width: 30px;
+            height: 30px;
+            rotate: -28deg;
+            transform: rotate(11deg);
+        }
 
-    body .pointerBody.face .arms .arm:nth-of-type(4) {
+    body .pointerBody.face .arms .arm4 {
         right: 32px;
         top: -4px;
         border-radius: 0 200px 80px 0;
         height: 40px;
         rotate: 3deg;
     }
+        body .pointerBody.face .arms .arm4:before {
+            content: "";
+            position: absolute;
+            left: auto;
+            right: 0px;
+            top: 11px;
+            transform-origin: top left;
+            border-radius: 0 200px 80px 0;
+            border-top: 2px solid #ccb693;
+            border-right: 2px solid #ccb693;
+            border-left: none;
+            width: 8px;
+            height: 27px;
+            rotate: -15deg;
+            transform: rotate(10deg);
+        }
 
-    body .pointerBody.face .arms .arm:nth-of-type(6) {
+    body .pointerBody.face .arms .arm6 {
         right: -4px;
         left: auto;
         top: 4px;
@@ -129,6 +205,21 @@ body .pointerBody.face .arms .arm {
         border-left: 15px solid #a690d2;
         rotate: 45deg;
     }
+        body .pointerBody.face .arms .arm6:before {
+            content: "";
+            position: absolute;
+            right: -5px;
+            left: auto;
+            top: -2px;
+            width: 41px;
+            height: 25px;
+            transform-origin: bottom left;
+            border-radius: 0px 17px 26px 62px;
+            border-top: none;
+            border-bottom: 8px solid #ccb693;
+            border-left: 9px solid #ccb693;
+            rotate: -15deg;
+        }
 
 body .pointerBody.face .inner {
     position: absolute;
