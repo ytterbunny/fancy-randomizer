@@ -308,6 +308,9 @@
     border-right: 10px solid #8b79ac;
     border-bottom: 10px solid transparent;
 }
+#bookmark:hover {
+    cursor: pointer;
+}
 
 
 #resultListLabel {

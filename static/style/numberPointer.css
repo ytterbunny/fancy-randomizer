@@ -26,7 +26,7 @@ body .pointerBody:before {
     position: absolute;
     width: 6px;
     height: 6px;
-    background:  #000;
+    background:  #a690d2;
     border-radius: 100%;
     top: calc(50% - 3px);
     left: calc(50% - 3px);
