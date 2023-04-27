@@ -1,6 +1,6 @@
 #rippleNumsOuter {
     width: 100%;
-    z-index:2;
+    z-index:10;
     position: absolute;
     top: calc(35%);
 }

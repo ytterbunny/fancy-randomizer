@@ -5,7 +5,7 @@
 [data-tooltip] {
   --arrow-size: 5px;
   position: relative;
-  z-index: 10;
+  z-index: 30;
 }
 
 /* Positioning and visibility settings of the tooltip */

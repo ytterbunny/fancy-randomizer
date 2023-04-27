@@ -130,7 +130,7 @@ $(document).ready(function(){
             min = 1;
             $("#fromNum").val(min);
         }
-        if (max == null || max == "" || min < 2) {
+        if (max == null || max == "" || max < 2) {
             max = 100;
             $("#toNum").val(max);
         }

@@ -5,7 +5,7 @@
     opacity: 1;
   }
   100% {
-    transform: scale(10);
+    transform: scale(13);
     opacity: 0;
   }
 }
@@ -22,5 +22,5 @@
   background: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   position: fixed;
-  z-index: 3;
+  z-index: 15;
 }
