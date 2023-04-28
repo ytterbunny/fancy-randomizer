@@ -23,7 +23,7 @@ function resetTimer() {
 function timerIncrement() {
 
     /* Set the timer text to the new value */
-    console.log("time: " + currSeconds);
+//    console.log("time: " + currSeconds);
 
     if (currSeconds == idleTime) {
         // start idle animation
