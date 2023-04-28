@@ -1,10 +1,46 @@
+// config ---------------------------------------------------------
 var delay = 1200;
 var soloDelay = 350;
 var glowDelay = 800;
+var idleTime = 60;
+
+
+// global var ---------------------------------------------------------
 var numPosition = null;
 var numPointerTop = null;
 var numPointerLeft = null;
+var currSeconds = 0;
+var prevSeconds = 0;
+var onIdle = false;
+var randomClickWhenIdle = false;
 
+
+// timer ---------------------------------------------------------
+function resetTimer() {
+    currSeconds = 0;
+}
+
+function timerIncrement() {
+
+    /* Set the timer text to the new value */
+    console.log("time: " + currSeconds);
+
+    if (currSeconds == idleTime) {
+        // start idle animation
+        startIdleAnimation();
+    }
+
+    if (prevSeconds > currSeconds && prevSeconds >= idleTime) {
+        // come back, stop idle animation
+        stopIdleAnimation();
+    }
+
+    prevSeconds = currSeconds;
+    currSeconds = currSeconds + 1;
+}
+
+
+// randomization ----------------------------------------------
 function appendNumToResult(i, num) {
     if (i == 0) {
         $("#randomResult").text(num);
@@ -34,7 +70,7 @@ function appendResultList(result) {
 
 function setPointerAnimation(status) {
     $(".followBody").css("animation-play-state", status);
-    $(".arm").css("animation-play-state", status);
+    $(".followBody.face .arms .arm").css("animation-play-state", status);
     $(".followBody.face .inner").css("animation-play-state", status);
     $(".followBody.face .inner .mouth").css("animation-play-state", status);
     $(".followBody.face .inner .ears").css("animation-play-state", status);
@@ -95,9 +131,30 @@ function enableInput() {
     $("#randomForm > input").prop("disabled", false);
 }
 
+// doc ready ------------------------------------------------------
 $(document).ready(function(){
 
+
+    /* Increment the idle time counter every second */
+    $("#idleOuter").hide();
+    $("#idleOuter").css("visibility", "visible");
+    let idleInterval = setInterval(timerIncrement, 1000);
+
+    /* Zero the idle timer on mouse movement */
+    window.onload = resetTimer;
+//    window.onmousemove = resetTimer;
+//    window.onmousedown = resetTimer;
+//    window.ontouchend = resetTimer;
+    window.onclick = resetTimer;
+    window.onkeypress = resetTimer;
+
+
+    // randomization
     $("#randomButton").click(function(){
+
+        if (onIdle) {
+            randomClickWhenIdle = true;
+        }
 
         if (numPosition == null) {
 
@@ -138,6 +195,7 @@ $(document).ready(function(){
         // clear random number
         $("#randomResult").html('<span style="font-family: ShineDemo; font-size: 20px">+++</span>');
         disableInput();
+        resetTimer();
 
         var randomNum = Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -149,6 +207,7 @@ $(document).ready(function(){
                 $("#randomResult").text(randomNum);
                 appendResultList(randomNum);
                 enableInput();
+                resetTimer();
             }, 500);
         }
 
@@ -156,7 +215,7 @@ $(document).ready(function(){
 
             setPointerAnimation("paused");
             $(document).off('mousemove');
-            $(".followBody").animate({top: "-=500px"}, delay, "swing", function() {
+            $(".followBody").animate({left: numPointerLeft, top: numPointerTop}, delay, "swing", function() {
                 var randomNumStr = randomNum.toString();
                 var i = 0;
                 moveTo(randomNumStr, i, delay);
@@ -166,6 +225,8 @@ $(document).ready(function(){
 
 });
 
+
+// moving for randomization ----------------------------------------------
 function moveTo(randomNumStr, i) {
 
     if (i == randomNumStr.length) {
@@ -175,6 +236,7 @@ function moveTo(randomNumStr, i) {
             enableInput();
             setPointerAnimation("running");
             trackMouseMove();
+            resetTimer();
         });
         return;
     }
@@ -232,4 +294,52 @@ function moveTo(randomNumStr, i) {
 }
 
 
+// idle animation ----------------------------------------------
+
+function stopIdleAnimation() {
+    console.log("oh someone is back!");
+
+    if (randomClickWhenIdle && !$("#skip").prop("checked")) {
+        $("#idleOuter").fadeOut("fast");
+        setTimeout(function() {
+            $("#speedcapture").fadeIn()
+        }, delay)
+    }
+    else {
+        $("#idleOuter").fadeOut();
+        $("#speedcapture").fadeIn()
+        $(".followBody").css("left", "calc(50% - 30px)");
+        $(".followBody").css("top", "calc(50% - 30px)");
+    }
+
+    setPointerAnimation("running");
+    trackMouseMove();
+    onIdle = false;
+
+    /* reset any idle animate here */
+    $(".idleMainBody.face .arms .arm2").removeClass("armSwayLeft");
+    $(".idleMainBody.face .arms .arm3").removeClass("armSwayLeft");
+    $(".idleMainBody.face .arms .arm4").removeClass("armSwayLeft");
+    $(".idleMainBody.face .arms .arm5").removeClass("armSwayRight");
+    $(".idleMainBody.face .inner .mouth").removeClass("eyesBlink");
+}
+
+function startIdleAnimation() {
+    console.log("start idle animation");
+
+    onIdle = true;
+    randomClickWhenIdle = false;
+    setPointerAnimation("paused");
+
+    $(document).off('mousemove');
+    $("#speedcapture").fadeOut();
+    $("#idleOuter").fadeIn()
+
+    /* start real idle animate here */
+    $(".idleMainBody.face .arms .arm2").addClass("armSwayLeft");
+    $(".idleMainBody.face .arms .arm3").addClass("armSwayLeft");
+    $(".idleMainBody.face .arms .arm4").addClass("armSwayLeft");
+    $(".idleMainBody.face .arms .arm5").addClass("armSwayRight");
+    $(".idleMainBody.face .inner .mouth").addClass("eyesBlink");
+}
 

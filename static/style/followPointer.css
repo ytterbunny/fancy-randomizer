@@ -2,8 +2,8 @@
 
 body #speedcapture {
     opacity: 1;
-    z-index: 25;
 }
+
 body .followBody {
     width: 60px;
     height: 60px;
@@ -328,7 +328,6 @@ body .followBody.face .inner {
     height: 100%;
     border-radius: 100%;
     animation: look1 6s ease-in-out infinite;
-    transform-style: preserve-3d;
 }
 @keyframes look1 {
     0% {
@@ -450,16 +449,5 @@ body .followBody.face .inner .glasses:after {
     }
     100% {
         transform: translateX(0px) translateY(0px);
-    }
-}
-
-@keyframes blurIn {
-    from {
-        -webkit-filter: blur(50px);
-        opacity:0;
-    }
-    to {
-        -webkit-filter: blur(0px);
-        opacity:1;
     }
 }
