@@ -3,7 +3,7 @@ var delay = 1200;
 var soloDelay = 350;
 var glowDelay = 800;
 var idleTime = 60;
-var sleepTime = 120;
+var sleepTime = 122;
 
 
 // global var ---------------------------------------------------------
