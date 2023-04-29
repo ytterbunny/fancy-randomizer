@@ -258,6 +258,18 @@ body .idleMainBody.face .inner .mouth {
     left: 15px;
     box-shadow: 25px 0 0 #000;
 }
+body .idleMainBody.face .inner .eyelid {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 10px;
+    background: #a690d2;
+    border-radius: 100%;
+    top: 13px;
+    left: 13px;
+    box-shadow: 25px 0 0 #a690d2;
+    animation-fill-mode: forwards;
+}
 
 body .idleMainBody.face .inner .ears {
     content: "";
@@ -300,7 +312,17 @@ body .idleMainBody.face .inner .glasses {
         top: 0px;
     }
 
-
+.zzz {
+    position: absolute;
+    top: 2px;
+    right: -18px;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgb(119 102 154);
+    cursor: default;
+    opacity: 0;
+}
 
 
 
@@ -317,11 +339,54 @@ body .idleMainBody.face .inner .glasses {
     }
 }
 @keyframes blink {
-    80% {
-        transform: scaleY(1);
+    75% {
+        transform: translateY(0px);
     }
     100% {
-        transform: scaleY(0.4);
+        transform: translateY(8px);
+    }
+}
+@keyframes eyeToSleep {
+     to {
+         transform: translateY(8px);
+     }
+ }
+ @keyframes eyeSleeping {
+     from {
+         transform: translateY(0px);
+     }
+     to {
+         transform: translateY(11px);
+     }
+ }
+@keyframes eyelidSleeping {
+    from {
+        transform: translateY(8px);
+    }
+    to {
+        transform: translateY(19px);
+    }
+}
+@keyframes zzzUp {
+    0%, 19%, 41% {
+        transform: translate(0px, 0px);
+        font-size: 15px;
+        opacity: 0;
+    }
+    20% {
+        transform: translate(0px, 0px);
+        font-size: 15px;
+        opacity: 1;
+    }
+    40% {
+        transform: translate(10px, -25px);
+        font-size: 20px;
+        opacity: 1;
+    }
+    41% {
+        transform: translate(10px, -25px);
+        font-size: 20px;
+        opacity: 0;
     }
 }
 
@@ -334,5 +399,21 @@ body .idleMainBody.face .inner .glasses {
 }
 
 .eyesBlink {
-    animation: blink 4s ease-in-out  infinite alternate;
+    animation: blink 4s ease-in-out infinite alternate;
+}
+
+.eyeSleep {
+    animation: eyeToSleep 2s ease-in-out;
+}
+
+.sleeping {
+    animation: eyeSleeping 2s ease-in-out infinite alternate;
+}
+
+.lidSleeping {
+    animation: eyelidSleeping 2s ease-in-out infinite alternate;
+}
+
+.zzzSleeping {
+    animation: zzzUp 4s ease-in-out infinite;
 }

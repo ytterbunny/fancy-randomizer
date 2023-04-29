@@ -3,6 +3,7 @@ var delay = 1200;
 var soloDelay = 350;
 var glowDelay = 800;
 var idleTime = 60;
+var sleepTime = 120;
 
 
 // global var ---------------------------------------------------------
@@ -13,6 +14,7 @@ var currSeconds = 0;
 var prevSeconds = 0;
 var onIdle = false;
 var randomClickWhenIdle = false;
+var animationClasses = new Set();
 
 
 // timer ---------------------------------------------------------
@@ -28,6 +30,10 @@ function timerIncrement() {
     if (currSeconds == idleTime) {
         // start idle animation
         startIdleAnimation();
+    }
+
+    if (currSeconds == sleepTime) {
+        putMainTakoToSleep();
     }
 
     if (prevSeconds > currSeconds && prevSeconds >= idleTime) {
@@ -317,16 +323,21 @@ function stopIdleAnimation() {
     onIdle = false;
 
     /* reset any idle animate here */
-    $(".idleMainBody.face .arms .arm2").removeClass("armSwayLeft");
-    $(".idleMainBody.face .arms .arm3").removeClass("armSwayLeft");
-    $(".idleMainBody.face .arms .arm4").removeClass("armSwayLeft");
-    $(".idleMainBody.face .arms .arm5").removeClass("armSwayRight");
-    $(".idleMainBody.face .inner .mouth").removeClass("eyesBlink");
+    setTimeout(function() {
+        resetIdleAnimation();
+    }, 3000)
+}
+
+function resetIdleAnimation() {
+    console.log(animationClasses);
+    animationClasses.forEach (function(value) {
+        $("." + value).removeClass(value);
+    })
+
+    animationClasses.clear();
 }
 
 function startIdleAnimation() {
-    console.log("start idle animation");
-
     onIdle = true;
     randomClickWhenIdle = false;
     setPointerAnimation("paused");
@@ -336,10 +347,30 @@ function startIdleAnimation() {
     $("#idleOuter").fadeIn()
 
     /* start real idle animate here */
-    $(".idleMainBody.face .arms .arm2").addClass("armSwayLeft");
-    $(".idleMainBody.face .arms .arm3").addClass("armSwayLeft");
-    $(".idleMainBody.face .arms .arm4").addClass("armSwayLeft");
-    $(".idleMainBody.face .arms .arm5").addClass("armSwayRight");
-    $(".idleMainBody.face .inner .mouth").addClass("eyesBlink");
+    startMainTako();
 }
 
+function startMainTako() {
+    addAnimationClass(".idleMainBody.face .arms .arm2", "armSwayLeft");
+    addAnimationClass(".idleMainBody.face .arms .arm3", "armSwayLeft");
+    addAnimationClass(".idleMainBody.face .arms .arm4", "armSwayLeft");
+    addAnimationClass(".idleMainBody.face .arms .arm5", "armSwayRight");
+    addAnimationClass(".idleMainBody.face .inner .eyelid", "eyesBlink");
+}
+
+function putMainTakoToSleep() {
+    $(".idleMainBody.face .inner .eyelid").removeClass("eyesBlink");
+    addAnimationClass(".idleMainBody.face .inner .eyelid", "eyeSleep");
+    setTimeout(function() {
+        $(".idleMainBody.face .inner .eyelid").removeClass("eyeSleep");
+        addAnimationClass(".idleMainBody.face .inner .eyelid", "lidSleeping");
+        addAnimationClass(".idleMainBody.face .inner .mouth", "sleeping");
+        addAnimationClass(".idleMainBody.face .inner .glasses", "sleeping");
+        addAnimationClass(".idleMainBody.face .zzz", "zzzSleeping");
+    }, 3000)
+}
+
+function addAnimationClass(selector, className) {
+    $(selector).addClass(className);
+    animationClasses.add(className);
+}
