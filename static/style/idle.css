@@ -455,8 +455,8 @@ body #maruayOuterBody .blanket {
     position: absolute;
     width: 37px;
     height: 26px;
-    background-color: #d0c6df;
-    border: 1px solid #acacac;
+    background-color: #c5b8d9;
+    border: 3px solid #4c3972;
     border-top: 1px solid #d0c5df;
     border-radius: 0px 0px 5px 16px;
     bottom: -44px;
@@ -468,19 +468,19 @@ body #maruayOuterBody .blanket {
         position: absolute;
         width: 37px;
         height: 26px;
-        background-color: #d0c6df;
-        border: 1px solid #acacac;
+        background-color: #c5b8d9;
+        border: 3px solid #4c3972;
         border-top: 1px solid #d0c5df;
         border-radius: 0px 0px 16px 5px;
-        bottom: -47px;
-        left: -56px;
+        bottom: -51px;
+        left: -60px;
         rotate: -80deg;
     }
 
 .zzz {
     position: absolute;
     top: 2px;
-    right: -18px;
+    right: -13px;
     font-size: 15px;
     font-family: sans-serif;
     font-weight: bold;

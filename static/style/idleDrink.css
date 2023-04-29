@@ -53,8 +53,8 @@ body .idleDrinkBody.face .arms .arm {
 }
 
     body .idleDrinkBody.face .arms .arm1 {
-        left: -5px;
-        top: -9px;
+        left: -12px;
+        top: -11px;
         border-radius: 0 0 100px 80px;
         border-bottom: 15px solid #a690d2;
         border-right: 15px solid #a690d2;
@@ -62,7 +62,7 @@ body .idleDrinkBody.face .arms .arm {
         transform-origin: bottom right;
         border-top: none;
         height: 5px;
-        width: 25px;
+        width: 32px;
         rotate: -55deg;
         animation-delay: 1000ms;
     }
@@ -83,8 +83,8 @@ body .idleDrinkBody.face .arms .arm {
         }
 
     body .idleDrinkBody.face .arms .arm2 {
-        left: 6px;
-        top: 4px;
+        left: 3px;
+        top: 1px;
         border-radius: 100px 0 0 50px;
         border-top: 20px solid #a690d2;
         border-left: 16px solid #a690d2;
@@ -109,9 +109,9 @@ body .idleDrinkBody.face .arms .arm {
         }
 
     body .idleDrinkBody.face .arms .arm3 {
-        left: 20px;
+        left: 22px;
         /* right: 12px; */
-        top: 2px;
+        top: 1px;
         transform-origin: top left;
         border-radius: 0px 138px 55px 0px;
         border-top: 23px solid #a690d2;
@@ -119,11 +119,13 @@ body .idleDrinkBody.face .arms .arm {
         border-left: none;
         rotate: 24deg;
         animation-delay: 4497ms;
+        width: 27px;
+        height: 27px;
     }
         body .idleDrinkBody.face .arms .arm3:before {
             content: "";
             position: absolute;
-            left: 14px;
+            left: 6px;
             top: -1px;
             /* right: 2px; */
             transform-origin: top left;
@@ -133,7 +135,7 @@ body .idleDrinkBody.face .arms .arm {
             border-left: none;
             width: 19px;
             height: 28px;
-            rotate: 8deg;
+            rotate: -4deg;
         }
 
 
@@ -341,7 +343,8 @@ body .idleDrinkBody.face .inner .glasses {
     font-weight: bold;
     color: #dd0c3e;
     cursor: default;
-    opacity: 0;
+    opacity: 0.5;
+    filter: blur(2px);
 }
     .blushes > div:first-child {
          position: absolute;
@@ -383,7 +386,10 @@ body .idleDrinkBody.face .inner .glasses {
     }
 }
 @keyframes blushing {
-    to {
+    75% {
+        opacity: 0.5;
+    }
+    100% {
         opacity: 1;
     }
 }
