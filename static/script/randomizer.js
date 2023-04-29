@@ -329,7 +329,6 @@ function stopIdleAnimation() {
 }
 
 function resetIdleAnimation() {
-    console.log(animationClasses);
     animationClasses.forEach (function(value) {
         $("." + value).removeClass(value);
     })
