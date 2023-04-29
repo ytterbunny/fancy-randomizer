@@ -239,6 +239,16 @@ body .pointerBody.face .inner .mouth {
     left: 9px;
     box-shadow: 25px 0 0 #000;
 }
+    body .pointerBody.face .inner .mouth:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background: #000;
+        border-radius: 100%;
+        top: 14px;
+        left: 28px;
+    }
 body .pointerBody.face .inner .ears {
     content: "";
     position: absolute;

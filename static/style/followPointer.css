@@ -359,7 +359,6 @@ body .followBody.face .inner {
 }
 body .followBody.face .inner .mouth {
     /*border-radius: 5px 5px 150px 150px;*/
-    content: "";
     position: absolute;
     width: 5px;
     height: 10px;
@@ -369,6 +368,17 @@ body .followBody.face .inner .mouth {
     left: 15px;
     box-shadow: 25px 0 0 #000;
 }
+    body .followBody.face .inner .mouth:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background: #000;
+        border-radius: 100%;
+        top: 14px;
+        left: 28px;
+    }
+
 body .followBody.face .inner .ears {
     content: "";
     position: absolute;

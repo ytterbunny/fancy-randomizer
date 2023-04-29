@@ -258,6 +258,17 @@ body .idleMainBody.face .inner .mouth {
     left: 15px;
     box-shadow: 25px 0 0 #000;
 }
+    body .idleMainBody.face .inner .mouth:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background: #000;
+        border-radius: 100%;
+        top: 14px;
+        left: 28px;
+    }
+
 body .idleMainBody.face .inner .eyelid {
     content: "";
     position: absolute;
