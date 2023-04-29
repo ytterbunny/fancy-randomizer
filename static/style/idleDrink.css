@@ -1,29 +1,24 @@
-.idleOuter {
-    perspective: 1000px;
-    backface-visibility: hidden;
-    visibility: hidden;
-}
-
-body #idleMainOuter {
+body #idleDrinkOuter {
     position:fixed;
     z-index: 25;
     bottom: 140px;
     right: 240px;
     width:50px;
     height:50px;
+    visibility: hidden;
     /*background-color:lime;    */
 }
 
-body .idleMainBody {
-    position: absolute;
+body .idleDrinkBody {
+    position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 52px;
+    bottom: 0px;
     right:0;
     border-radius: 100%;
 }
 
-    body .idleMainBody:before {
+    body .idleDrinkBody:before {
         content: "";
         position: absolute;
         width: 10px;
@@ -35,8 +30,7 @@ body .idleMainBody {
         filter: blur(5px);
     }
 
-
-body .idleMainBody.face .arms {
+body .idleDrinkBody.face .arms {
     width: 80px;
     height: 10px;
     position: absolute;
@@ -45,7 +39,7 @@ body .idleMainBody.face .arms {
     z-index: 0;
     border-radius: 50px;
 }
-body .idleMainBody.face .arms .arm {
+body .idleDrinkBody.face .arms .arm {
     content: "";
     position: absolute;
     left: 0;
@@ -58,9 +52,9 @@ body .idleMainBody.face .arms .arm {
     transform-origin: top right;
 }
 
-    body .idleMainBody.face .arms .arm1 {
-        left: -9px;
-        top: -5px;
+    body .idleDrinkBody.face .arms .arm1 {
+        left: -5px;
+        top: -9px;
         border-radius: 0 0 100px 80px;
         border-bottom: 15px solid #a690d2;
         border-right: 15px solid #a690d2;
@@ -69,9 +63,10 @@ body .idleMainBody.face .arms .arm {
         border-top: none;
         height: 5px;
         width: 25px;
-        rotate: -29deg;
+        rotate: -55deg;
+        animation-delay: 1000ms;
     }
-        body .idleMainBody.face .arms .arm1:before {
+        body .idleDrinkBody.face .arms .arm1:before {
             content: "";
             position: absolute;
             left: -3px;
@@ -87,61 +82,65 @@ body .idleMainBody.face .arms .arm {
             rotate: 16deg;
         }
 
-    body .idleMainBody.face .arms .arm2 {
-            left: 3px;
-            top: 2px;
-            border-radius: 100px 0 0 50px;
-            border-top: 15px solid #a690d2;
-            border-left: 15px solid #a690d2;
-            transform-origin: top right;
-            rotate: 0deg; /*-2deg;*/
-            animation-delay: 0ms;
+    body .idleDrinkBody.face .arms .arm2 {
+        left: 6px;
+        top: 4px;
+        border-radius: 100px 0 0 50px;
+        border-top: 20px solid #a690d2;
+        border-left: 16px solid #a690d2;
+        transform-origin: top right;
+        rotate: -17deg;
+        animation-delay: 0ms;
+        width: 18px;
+        height: 30px;
     }
-        body .idleMainBody.face .arms .arm2:before {
+        body .idleDrinkBody.face .arms .arm2:before {
             content: "";
             position: absolute;
-            left: -6px;
-            top: 4px;
+            left: -3px;
+            top: 8px;
             border-radius: 50px 0 0 25px;
-            border-top: 3px solid #ccb693;
-            border-left: 4px solid #ccb693;
-            transform-origin: top right;
-            rotate: -6deg;
-            height: 24px;
-            width: 14px;
-        }
-
-    body .idleMainBody.face .arms .arm3 {
-            left: 16px;
-            top: 4px;
-            border-radius: 200px 0 0 80px;
-            border-top: 15px solid #a690d2;
-            border-left: 15px solid #a690d2;
-            transform-origin: top right;
-            width: 20px;
-            height: 35px;
-            rotate: -3deg;
-            animation-delay: 1500ms;
-    }
-        body .idleMainBody.face .arms .arm3:before {
-            content: "";
-            position: absolute;
-            left: -1px;
-            top: 9px;
-            border-radius: 12px 0 26px 9px;
-            border-top: 2px solid #ccb693;
+            border-top: 0px solid #ccb693;
             border-left: 2px solid #ccb693;
             transform-origin: top right;
-            rotate: 4deg;
-            height: 24px;
-            width: 11px;
+            rotate: -6deg;
+            height: 22px;
+            width: 5px;
+        }
+
+    body .idleDrinkBody.face .arms .arm3 {
+        left: 20px;
+        /* right: 12px; */
+        top: 2px;
+        transform-origin: top left;
+        border-radius: 0px 138px 55px 0px;
+        border-top: 23px solid #a690d2;
+        border-right: 15px solid #a690d2;
+        border-left: none;
+        rotate: 24deg;
+        animation-delay: 4497ms;
+    }
+        body .idleDrinkBody.face .arms .arm3:before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: -1px;
+            /* right: 2px; */
+            transform-origin: top left;
+            border-radius: 0 100px 50px 0;
+            border-top: 3px solid #ccb693;
+            border-right: 5px solid #ccb693;
+            border-left: none;
+            width: 19px;
+            height: 28px;
+            rotate: 8deg;
         }
 
 
-    body .idleMainBody.face .arms .arm4 {
+    body .idleDrinkBody.face .arms .arm4 {
         left: auto;
-        right: 30px;
-        top: -5px;
+        right: 24px;
+        top: 2px;
         transform-origin: top left;
         border-radius: 0 200px 80px 0;
         border-top: 15px solid #a690d2;
@@ -149,10 +148,10 @@ body .idleMainBody.face .arms .arm {
         border-left: none;
         height: 40px;
         width: 22px;
-        rotate: -1deg;
+        rotate: -11deg;
         animation-delay: 3000ms;
     }
-        body .idleMainBody.face .arms .arm4:before {
+        body .idleDrinkBody.face .arms .arm4:before {
             content: "";
             position: absolute;
             left: auto;
@@ -168,18 +167,19 @@ body .idleMainBody.face .arms .arm {
             rotate: -6deg;
         }
 
-    body .idleMainBody.face .arms .arm5 {
+    body .idleDrinkBody.face .arms .arm5 {
         left: auto;
-        right: 12px;
+        right: 16px;
+        top: 17px;
         transform-origin: top left;
         border-radius: 0 100px 50px 0;
         border-top: 15px solid #a690d2;
         border-right: 15px solid #a690d2;
         border-left: none;
-        rotate: 4deg;
-        animation-delay: 4500ms;
+        rotate: -19deg;
+        animation-delay: 4497ms;
     }
-        body .idleMainBody.face .arms .arm5:before {
+        body .idleDrinkBody.face .arms .arm5:before {
             content: "";
             position: absolute;
             left: auto;
@@ -195,10 +195,10 @@ body .idleMainBody.face .arms .arm {
             rotate: -20deg;
         }
 
-    body .idleMainBody.face .arms .arm6 {
-        right: 0px;
+    body .idleDrinkBody.face .arms .arm6 {
+        right: 5px;
         left: auto;
-        top: -5px;
+        top: -1px;
         width: 30px;
         height: 5px;
         transform-origin: bottom left;
@@ -206,9 +206,9 @@ body .idleMainBody.face .arms .arm {
         border-top: none;
         border-bottom: 15px solid #a690d2;
         border-left: 15px solid #a690d2;
-        rotate: 23deg;
+        rotate: 22deg;
     }
-        body .idleMainBody.face .arms .arm6:before {
+        body .idleDrinkBody.face .arms .arm6:before {
             content: "";
             position: absolute;
             right: -5px;
@@ -224,24 +224,24 @@ body .idleMainBody.face .arms .arm {
             rotate: -15deg;
         }
 
-body .idleMainBody.face .inner {
+body .idleDrinkBody.face .inner {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 100%;
 }
 
-body .idleMainBody.face .inner .mouth {
+body .idleDrinkBody.face .inner .mouth {
     position: absolute;
     width: 5px;
     height: 10px;
     background: #000;
     border-radius: 100%;
-    top: 24px;
-    left: 15px;
+    top: 30px;
+    left: 21px;
     box-shadow: 25px 0 0 #000;
 }
-    body .idleMainBody.face .inner .mouth:after {
+    body .idleDrinkBody.face .inner .mouth:after {
         content: "";
         position: absolute;
         width: 1px;
@@ -252,41 +252,38 @@ body .idleMainBody.face .inner .mouth {
         left: 28px;
     }
 
-body .idleMainBody.face .inner .eyelid {
-    content: "";
+body .idleDrinkBody.face .inner .eyelid {
     position: absolute;
     width: 9px;
     height: 10px;
     background: #a690d2;
     border-radius: 100%;
-    top: 13px;
-    left: 13px;
+    top: 19px;
+    left: 19px;
     box-shadow: 25px 0 0 #a690d2;
     animation-fill-mode: forwards;
 }
 
-body .idleMainBody.face .inner .ears {
-    content: "";
+body .idleDrinkBody.face .inner .ears {
     position: absolute;
     width: 15px;
     height: 15px;
     background: #a690d2;
     border-radius: 50%;
-    top: 3px;
-    left: 3px;
+    top: 4px;
+    left: 1px;
     box-shadow: 40px 0 0 #a690d2;
 }
-body .idleMainBody.face .inner .glasses {
-    content: "";
+body .idleDrinkBody.face .inner .glasses {
     position: absolute;
     width: 15px;
     height: 5px;
     border-radius: 50px;
     border: 2px solid #222;
-    top: 28px;
-    left: 8px;
+    top: 33px;
+    left: 14px;
 }
-    body .idleMainBody.face .inner .glasses:before {
+    body .idleDrinkBody.face .inner .glasses:before {
         content: "";
         position: absolute;
         width: 15px;
@@ -296,7 +293,7 @@ body .idleMainBody.face .inner .glasses {
         left: 23px;
         top: -2px;
     }
-    body .idleMainBody.face .inner .glasses:after {
+    body .idleDrinkBody.face .inner .glasses:after {
         content: "";
         position: absolute;
         width: 8px;
@@ -306,175 +303,55 @@ body .idleMainBody.face .inner .glasses {
         top: 0px;
     }
 
-.miniTakoOuter {
+.whiskyGlass {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    visibility: hidden;
-}
-#maruayOuterBody {
-    bottom: 85px;
-    right: -58px;
-}
-.miniTako {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    bottom: 0px;
-    right: 0px;
-    border-radius: 100%;
-    background-color: #9683bd;
-}
-body .miniTako .miniArms {
-    width: 20px;
+    top: 32px;
+    right: -17px;
+    margin: 0 auto;
     height: 20px;
-    position: absolute;
-    left: 12px;
-    bottom: -7px;
-    border-left: 9px solid #9683bd;
-    border-radius: 0px 0px 0px 10px;
+    width: 15px;
+    border-radius: 0px 0px 5px 5px;
+    box-sizing: border-box;
+    background-color: rgba(250,222,255, 0.1);
+    border-bottom: rgb(250,178,178.5) 2px solid;
+    border-top: rgb(250,178,178.5, 0.8) 2px solid;
+    border-left: rgb(250,178,178.5, 0.5) 1px solid;
+    border-right: rgb(250,178,178.5, 0.5) 1px solid;
 }
-    body .miniTako .miniArms:before {
+    .whiskyGlass:after {
         content: "";
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        left: -19px;
-        bottom: 0px;
-        rotate: 10deg;
-        border-left: 9px solid #9683bd;
-        border-radius: 0px 0px 0px 10px;
-    }
-    body .miniTako .miniArms:after {
-        content: "";
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        left: -20px;
-        bottom: 0px;
-        rotate: -22deg;
-        border-right: 9px solid #9683bd;
-        border-radius: 0px 0px 10px 0px;
-    }
-
-body .tmpMiniTakoBody {
-    width: 30px;
-    height: 30px;
-    left: 0;
-    top: 0;
-    background: #9683bd;
-    position: absolute;
-    border-radius: 100%;
-}
-
-body .miniTako .inner .eyes {
-    position: absolute;
-    width: 5px;
-    height: 3px;
-    background: #000;
-    border-radius: 100%;
-    top: 21px;
-    left: 4px;
-    box-shadow: 13px 0 0 #000;
-}
-    /*body .miniTako .inner .eyes:before {
-        content: "";
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        background: #e0e0e0;
-        border-radius: 100%;
-        top: 1px;
-        left: 2px;
-        box-shadow: 13px 0 0 #e0e0e0;
-    }*/
-body #maruayBody .inner .hair {
-    position: absolute;
-    width: 12px;
-    height: 9px;
-    /* background: #c5c0c0; */
-    border-left: 2px #d0c7df solid;
-    border-top: 2px #d0c7df solid;
-    border-radius: 12px 8px 0px 2px;
-    top: 6px;
-    right: 0px;
-    rotate: 10deg;
-}
-    body #maruayBody .inner .hair:before {
-        content: "";
-        position: absolute;
-        width: 15px;
-        height: 10px;
-        /* background: #c5c0c0; */
-        border-left: 2px #d0c7df solid;
-        border-top: 2px #d0c7df solid;
-        border-radius: 12px 8px 0px 2px;
-        top: -3px;
-        right: 0px;
-        rotate: 3deg;
-    }
-    body #maruayBody .inner .hair:after {
-        content: "";
-        position: absolute;
-        width: 6px;
+        width: 11px;
+        margin: 0 auto;
         height: 7px;
-        /* background: #c5c0c0; */
-        border-left: 2px #d0c7df solid;
-        border-top: 2px #d0c7df solid;
-        border-radius: 12px 8px 0px 2px;
-        top: 1px;
-        right: -1px;
-        rotate: 3deg;
+        position: absolute;
+        bottom: 2px;
+        left: 1px;
+        border-radius: 0px 0px 5px 5px;
+        display: block;
+        background-image: linear-gradient(to bottom, rgb(255, 114, 0, 0.9), rgb(255, 177, 0, 0.9));
     }
 
-body #maruayBody .inner .glasses {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    /* background: #c5c0c0; */
-    border: 1px solid #cbb793;
-    border-radius: 100%;
-    bottom: 3px;
-    left: 2px;
-}
-    body #maruayBody .inner .glasses:before {
-        content: "";
-        position: absolute;
-        width: 4px;
-        height: 3px;
-        /* background: #c5c0c0; */
-        border-left: 1px solid #cbb793;
-        border-top: 1px solid #cbb793;
-        border-radius: 5px 0px 0px 0px;
-        bottom: 0px;
-        left: 6px;
-        rotate: 39deg;
-    }
 
-body #maruayOuterBody .blanket {
+.blushes {
     position: absolute;
-    width: 37px;
-    height: 26px;
-    background-color: #d0c6df;
-    border: 1px solid #acacac;
-    border-top: 1px solid #d0c5df;
-    border-radius: 0px 0px 5px 16px;
-    bottom: -44px;
-    left: -42px;
-    rotate: 40deg;
+    top: 42px;
+    right: 31px;
+    font-size: 7px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #dd0c3e;
+    cursor: default;
+    opacity: 0;
 }
-    body #maruayOuterBody .blanket:after {
-        content: "";
+    .blushes > div:first-child {
+         position: absolute;
+         top: 0px;
+         left: 14px;
+     }
+    .blushes > div:last-child {
         position: absolute;
-        width: 37px;
-        height: 26px;
-        background-color: #d0c6df;
-        border: 1px solid #acacac;
-        border-top: 1px solid #d0c5df;
-        border-radius: 0px 0px 16px 5px;
-        bottom: -47px;
-        left: -56px;
-        rotate: -80deg;
+        top: 0px;
+        right: 0px;
     }
 
 .zzz {
@@ -490,19 +367,48 @@ body #maruayOuterBody .blanket {
 }
 
 
+@keyframes drinkSwayRight {
+    to {
+        transform: translateX(-1px) rotate(-5deg);
+    }
+}
+@keyframes cheer {
+    to {
+        transform: translateY(-7px);
+    }
+}
+@keyframes armCheer {
+    to {
+        transform: rotate(-8deg);
+    }
+}
+@keyframes blushing {
+    to {
+        opacity: 1;
+    }
+}
 
+.drinkArmSwayRight {
+    animation: drinkSwayRight 2s ease-in-out infinite alternate;
+}
+.glassCheer {
+    animation: cheer 3s ease-in-out infinite alternate;
+}
+.drinkArmCheer {
+    animation: armCheer 3s ease-in-out infinite alternate;
+}
+.faceBlushing {
+    animation: blushing 3s ease-in-out infinite alternate;
+}
 
+/*
 
 @keyframes swayLeft {
     to {
         transform: translateX(2px) translateY(-2px) rotate(-4deg);
     }
 }
-@keyframes swayRight {
-    to {
-        transform: translateX(-1px) rotate(-7deg);
-    }
-}
+
 @keyframes blink {
     75% {
         transform: translateY(0px);
@@ -559,9 +465,7 @@ body #maruayOuterBody .blanket {
     animation: swayLeft 2s ease-in-out infinite alternate;
 }
 
-.armSwayRight {
-    animation: swayRight 2s ease-in-out infinite alternate;
-}
+
 
 .eyesBlink {
     animation: blink 4s ease-in-out infinite alternate;
@@ -582,3 +486,4 @@ body #maruayOuterBody .blanket {
 .zzzSleeping {
     animation: zzzUp 4s ease-in-out infinite;
 }
+*/

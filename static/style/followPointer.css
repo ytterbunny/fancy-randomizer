@@ -63,7 +63,7 @@ body .tmpTakoBody {
     border-radius: 100%;
 }
 
-body .tmpTakoBody:before {
+body .followBody .tmpTakoBody:before {
     content: "";
     position: absolute;
     width: 10px;

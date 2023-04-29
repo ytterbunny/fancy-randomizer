@@ -151,7 +151,7 @@ label[for=skip] {
 
 #numListOuter {
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: calc(25%);
     left: 0px;
     z-index: 5;

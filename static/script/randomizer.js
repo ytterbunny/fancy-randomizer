@@ -1,12 +1,17 @@
-// config ---------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+// config
+// ------------------------------------------------------------------------------------------------
 var delay = 1200;
 var soloDelay = 350;
 var glowDelay = 800;
 var idleTime = 60;
-var sleepTime = 122;
+var drinkTime = 90;
+var toSleepDuration = 62;
 
 
-// global var ---------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+// global var
+// ------------------------------------------------------------------------------------------------
 var numPosition = null;
 var numPointerTop = null;
 var numPointerLeft = null;
@@ -17,36 +22,50 @@ var randomClickWhenIdle = false;
 var animationClasses = new Set();
 
 
-// timer ---------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+// timer
+// ------------------------------------------------------------------------------------------------
 function resetTimer() {
     currSeconds = 0;
 }
 
 function timerIncrement() {
 
-    /* Set the timer text to the new value */
 //    console.log("time: " + currSeconds);
 
+    /* Main tako */
     if (currSeconds == idleTime) {
-        // start idle animation
+        // start main idle animation
         startIdleAnimation();
     }
-
-    if (currSeconds == sleepTime) {
+    if (currSeconds == (idleTime + toSleepDuration)) {
         putMainTakoToSleep();
     }
 
+    /* Drinking tako */
+    if (currSeconds == drinkTime) {
+        // start main idle animation
+        startDrinkTako();
+    }
+//    if (currSeconds == (drinkTime + toSleepDuration)) {
+//        putMainTakoToSleep();
+//    }
+
+    /* Stop Idle */
     if (prevSeconds > currSeconds && prevSeconds >= idleTime) {
         // come back, stop idle animation
         stopIdleAnimation();
     }
 
+    /* Set the timer text to the new value */
     prevSeconds = currSeconds;
     currSeconds = currSeconds + 1;
 }
 
 
-// randomization ----------------------------------------------
+// ------------------------------------------------------------------------------------------------
+// randomization
+// ------------------------------------------------------------------------------------------------
 function appendNumToResult(i, num) {
     if (i == 0) {
         $("#randomResult").text(num);
@@ -137,13 +156,42 @@ function enableInput() {
     $("#randomForm > input").prop("disabled", false);
 }
 
-// doc ready ------------------------------------------------------
+function saveNumPositions() {
+    if (numPosition == null) {
+
+        numPointerTop = $("#numPointer").css("top");
+        numPointerLeft = $("#numPointer").css("left");
+
+        numPosition = {
+            0: {id:"#num0", position:$("#num0").offset()},
+            1: {id:"#num1", position:$("#num1").offset()},
+            2: {id:"#num2", position:$("#num2").offset()},
+            3: {id:"#num3", position:$("#num3").offset()},
+            4: {id:"#num4", position:$("#num4").offset()},
+            5: {id:"#num5", position:$("#num5").offset()},
+            6: {id:"#num6", position:$("#num6").offset()},
+            7: {id:"#num7", position:$("#num7").offset()},
+            8: {id:"#num8", position:$("#num8").offset()},
+            9: {id:"#num9", position:$("#num9").offset()}
+        };
+
+        for (var i = 0; i < 10; i++) {
+            numPosition[i].position.left = numPosition[i].position.left-10;
+            numPosition[i].position.top = numPosition[i].position.top+250;
+        }
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// doc ready
+// ------------------------------------------------------------------------------------------------
 $(document).ready(function(){
 
 
     /* Increment the idle time counter every second */
-    $("#idleOuter").hide();
-    $("#idleOuter").css("visibility", "visible");
+    $(".idleOuter").hide();
+    $(".idleOuter").css("visibility", "visible");
     let idleInterval = setInterval(timerIncrement, 1000);
 
     /* Zero the idle timer on mouse movement */
@@ -162,29 +210,7 @@ $(document).ready(function(){
             randomClickWhenIdle = true;
         }
 
-        if (numPosition == null) {
-
-            numPointerTop = $("#numPointer").css("top");
-            numPointerLeft = $("#numPointer").css("left");
-
-            numPosition = {
-                0: {id:"#num0", position:$("#num0").offset()},
-                1: {id:"#num1", position:$("#num1").offset()},
-                2: {id:"#num2", position:$("#num2").offset()},
-                3: {id:"#num3", position:$("#num3").offset()},
-                4: {id:"#num4", position:$("#num4").offset()},
-                5: {id:"#num5", position:$("#num5").offset()},
-                6: {id:"#num6", position:$("#num6").offset()},
-                7: {id:"#num7", position:$("#num7").offset()},
-                8: {id:"#num8", position:$("#num8").offset()},
-                9: {id:"#num9", position:$("#num9").offset()}
-            };
-
-            for (var i = 0; i < 10; i++) {
-                numPosition[i].position.left = numPosition[i].position.left-10;
-                numPosition[i].position.top = numPosition[i].position.top+250;
-            }
-        }
+        saveNumPositions();
 
         // get/default min/max
         var min = Math.ceil($("#fromNum").val())
@@ -232,7 +258,9 @@ $(document).ready(function(){
 });
 
 
-// moving for randomization ----------------------------------------------
+// ------------------------------------------------------------------------------------------------
+// moving for randomization
+// ------------------------------------------------------------------------------------------------
 function moveTo(randomNumStr, i) {
 
     if (i == randomNumStr.length) {
@@ -300,19 +328,21 @@ function moveTo(randomNumStr, i) {
 }
 
 
-// idle animation ----------------------------------------------
+// ------------------------------------------------------------------------------------------------
+// Share idle animation
+// ------------------------------------------------------------------------------------------------
 
 function stopIdleAnimation() {
     console.log("oh someone is back!");
 
     if (randomClickWhenIdle && !$("#skip").prop("checked")) {
-        $("#idleOuter").fadeOut("fast");
+        $(".idleOuter").fadeOut("fast");
         setTimeout(function() {
             $("#speedcapture").fadeIn()
         }, delay)
     }
     else {
-        $("#idleOuter").fadeOut();
+        $(".idleOuter").fadeOut();
         $("#speedcapture").fadeIn()
         $(".followBody").css("left", "calc(50% - 30px)");
         $(".followBody").css("top", "calc(50% - 30px)");
@@ -328,6 +358,21 @@ function stopIdleAnimation() {
     }, 3000)
 }
 
+function startIdleAnimation() {
+    onIdle = true;
+    randomClickWhenIdle = false;
+    setPointerAnimation("paused");
+
+    $(document).off('mousemove');
+    $("#speedcapture").fadeOut();
+    $("#idleMainOuter").fadeIn()
+    $(".miniTakoOuter").hide();
+    $(".miniTakoOuter").css("visibility", "visible");
+
+    /* start real idle animate here */
+    startMainTako();
+}
+
 function resetIdleAnimation() {
     animationClasses.forEach (function(value) {
         $("." + value).removeClass(value);
@@ -336,18 +381,15 @@ function resetIdleAnimation() {
     animationClasses.clear();
 }
 
-function startIdleAnimation() {
-    onIdle = true;
-    randomClickWhenIdle = false;
-    setPointerAnimation("paused");
-
-    $(document).off('mousemove');
-    $("#speedcapture").fadeOut();
-    $("#idleOuter").fadeIn()
-
-    /* start real idle animate here */
-    startMainTako();
+function addAnimationClass(selector, className) {
+    $(selector).addClass(className);
+    animationClasses.add(className);
 }
+
+
+// ------------------------------------------------------------------------------------------------
+// Main idle animation
+// ------------------------------------------------------------------------------------------------
 
 function startMainTako() {
     addAnimationClass(".idleMainBody.face .arms .arm2", "armSwayLeft");
@@ -367,9 +409,30 @@ function putMainTakoToSleep() {
         addAnimationClass(".idleMainBody.face .inner .glasses", "sleeping");
         addAnimationClass(".idleMainBody.face .zzz", "zzzSleeping");
     }, 3000)
+    setTimeout(function() {
+        console.log("maruayyyy");
+        $("#maruayOuterBody").fadeIn();
+        addAnimationClass("#maruayBody", "sleeping");
+    }, 12000)
 }
 
-function addAnimationClass(selector, className) {
-    $(selector).addClass(className);
-    animationClasses.add(className);
+
+// ------------------------------------------------------------------------------------------------
+// Drink idle animation
+// ------------------------------------------------------------------------------------------------
+function startDrinkTako() {
+    saveNumPositions();
+    $("#idleDrinkOuter").css("top", numPosition[3].position.top-246);
+    $("#idleDrinkOuter").css("left", numPosition[3].position.left+30);
+
+    $("#idleDrinkOuter").fadeIn();
+    addAnimationClass(".idleDrinkBody.face .arms .arm1", "drinkArmSwayRight");
+    addAnimationClass(".idleDrinkBody.face .arms .arm2", "drinkArmSwayRight");
+    addAnimationClass(".idleDrinkBody.face .arms .arm3", "drinkArmSwayRight");
+    addAnimationClass(".idleDrinkBody.face .arms .arm4", "drinkArmSwayRight");
+    addAnimationClass(".idleDrinkBody.face .arms .arm5", "drinkArmSwayRight");
+    addAnimationClass(".idleDrinkBody.face .inner .eyelid", "eyesBlink");
+    addAnimationClass(".idleDrinkBody.face .whiskyGlass", "glassCheer");
+    addAnimationClass(".idleDrinkBody.face .arms .arm6", "drinkArmCheer");
+    addAnimationClass(".idleDrinkBody.face .blushes", "faceBlushing");
 }
