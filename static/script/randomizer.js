@@ -7,6 +7,7 @@ var glowDelay = 800;
 var idleTime = 60;
 var drinkTime = 90;
 var toSleepDuration = 62;
+var toDrinkEmptyDuration = 60;
 
 
 // ------------------------------------------------------------------------------------------------
@@ -47,9 +48,9 @@ function timerIncrement() {
         // start main idle animation
         startDrinkTako();
     }
-//    if (currSeconds == (drinkTime + toSleepDuration)) {
-//        putMainTakoToSleep();
-//    }
+    if (currSeconds == (drinkTime + toDrinkEmptyDuration)) {
+        putEmptyBottles();
+    }
 
     /* Stop Idle */
     if (prevSeconds > currSeconds && prevSeconds >= idleTime) {
@@ -348,6 +349,7 @@ function stopIdleAnimation() {
         $(".followBody").css("top", "calc(50% - 30px)");
     }
 
+    $("#resultLabel").css("opacity", 1);
     setPointerAnimation("running");
     trackMouseMove();
     onIdle = false;
@@ -368,6 +370,7 @@ function startIdleAnimation() {
     $("#idleMainOuter").fadeIn()
     $(".miniTakoOuter").hide();
     $(".miniTakoOuter").css("visibility", "visible");
+    $("#resultLabel").css("opacity", 0.3);
 
     /* start real idle animate here */
     startMainTako();
@@ -421,6 +424,7 @@ function putMainTakoToSleep() {
 // Drink idle animation
 // ------------------------------------------------------------------------------------------------
 function startDrinkTako() {
+    $(".emptyBottles").text("");
     $("#idleDrinkOuter").fadeIn();
     addAnimationClass(".idleDrinkBody.face .arms .arm1", "drinkArmSwayRight");
     addAnimationClass(".idleDrinkBody.face .arms .arm2", "drinkArmSwayRight");
@@ -435,4 +439,32 @@ function startDrinkTako() {
     console.log("chaeyoungggg");
     $("#chaeyoungOuterBody").fadeIn();
     addAnimationClass("#chaeyoungOuterBody", "sleeping");
+}
+
+function putEmptyBottles() {
+    var baseTop = -24;
+    var baseRight = -62;
+
+    putEmptyBottlesRecursive(baseTop, baseRight, 0)
+}
+
+function getBottleHtml(top, right, i) {
+    var text = "HANDSOME<3";
+    var bottleHtml =
+        '<div style="top: ' + top + 'px; right: ' + right + 'px">' +
+            "<span>" + text.charAt(i) +"</span>" +
+        "</div>";
+    return bottleHtml;
+}
+
+function putEmptyBottlesRecursive(top, right, i) {
+    if (i >= "HANDSOME<3".length) {
+        return;
+    }
+
+    var bottle = getBottleHtml(top, right, i);
+    $(".emptyBottles").append(bottle);
+    setTimeout(function() {
+        putEmptyBottlesRecursive(top, right-20, i+1)
+    }, toDrinkEmptyDuration*1000)
 }

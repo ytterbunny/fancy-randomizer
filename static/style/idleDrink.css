@@ -575,18 +575,53 @@ body #chaeyoungBody .inner .ribbonTail {
         border-left: rgb(250,178,178.5, 0.5) 1px solid;
         border-right: rgb(250,178,178.5, 0.5) 1px solid;
     }
-
-/*.zzz {
+#chaeyoungOuterBody .bottle > span {
     position: absolute;
-    top: 2px;
-    right: -18px;
-    font-size: 15px;
-    font-family: sans-serif;
-    font-weight: bold;
-    color: rgb(119 102 154);
-    cursor: default;
-    opacity: 0;
-}*/
+    top: -4px;
+    left: 3px;
+    color: rgb(199, 178, 144, 0.85);
+}
+
+#idleDrinkOuter .emptyBottles {
+    opacity: 0.9;
+}
+
+#idleDrinkOuter .emptyBottles > div {
+    position: absolute;
+    top: -24px;
+    right: -62px;
+    margin: 0 auto;
+    height: 22px;
+    width: 18px;
+    border-radius: 5px 5px 3px 3px;
+    box-sizing: border-box;
+    background-color: rgb(46, 42, 47, 0.7);
+    border-bottom: rgb(250,178,178.5) 2px solid;
+    border-top: rgb(250,178,178.5, 0.8) 2px solid;
+    border-left: rgb(250,178,178.5, 0.5) 1px solid;
+    border-right: rgb(250,178,178.5, 0.5) 1px solid;
+    visibility: visible;
+}
+    #idleDrinkOuter .emptyBottles > div:after {
+        content: "";
+        position: absolute;
+        top: -9px;
+        left: 4px;
+        margin: 0 auto;
+        height: 9px;
+        width: 8px;
+        box-sizing: border-box;
+        border-radius: 2px;
+        background-color: rgb(46 42 47);
+        border-top: rgb(249 178 179) 5px solid;
+        border-left: rgb(250,178,178.5, 0.5) 1px solid;
+        border-right: rgb(250,178,178.5, 0.5) 1px solid;
+    }
+#idleDrinkOuter .emptyBottles > div > span {
+    display: block;
+    color: rgb(199, 178, 144, 0.85);
+    font-size: 12px;
+}
 
 
 @keyframes drinkSwayRight {
@@ -626,89 +661,4 @@ body #chaeyoungBody .inner .ribbonTail {
     animation: blushing 3s ease-in-out infinite alternate;
 }
 
-/*
 
-@keyframes swayLeft {
-    to {
-        transform: translateX(2px) translateY(-2px) rotate(-4deg);
-    }
-}
-
-@keyframes blink {
-    75% {
-        transform: translateY(0px);
-    }
-    100% {
-        transform: translateY(8px);
-    }
-}
-@keyframes eyeToSleep {
-     to {
-         transform: translateY(8px);
-     }
- }
- @keyframes eyeSleeping {
-     from {
-         transform: translateY(0px);
-     }
-     to {
-         transform: translateY(11px);
-     }
- }
-@keyframes eyelidSleeping {
-    from {
-        transform: translateY(8px);
-    }
-    to {
-        transform: translateY(19px);
-    }
-}
-@keyframes zzzUp {
-    0%, 19%, 41% {
-        transform: translate(0px, 0px);
-        font-size: 15px;
-        opacity: 0;
-    }
-    20% {
-        transform: translate(0px, 0px);
-        font-size: 15px;
-        opacity: 1;
-    }
-    40% {
-        transform: translate(10px, -25px);
-        font-size: 20px;
-        opacity: 1;
-    }
-    41% {
-        transform: translate(10px, -25px);
-        font-size: 20px;
-        opacity: 0;
-    }
-}
-
-.armSwayLeft {
-    animation: swayLeft 2s ease-in-out infinite alternate;
-}
-
-
-
-.eyesBlink {
-    animation: blink 4s ease-in-out infinite alternate;
-}
-
-.eyeSleep {
-    animation: eyeToSleep 2s ease-in-out;
-}
-
-.sleeping {
-    animation: eyeSleeping 2s ease-in-out infinite alternate;
-}
-
-.lidSleeping {
-    animation: eyelidSleeping 2s ease-in-out infinite alternate;
-}
-
-.zzzSleeping {
-    animation: zzzUp 4s ease-in-out infinite;
-}
-*/

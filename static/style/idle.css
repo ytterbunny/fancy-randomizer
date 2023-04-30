@@ -462,6 +462,7 @@ body #maruayOuterBody .blanket {
     bottom: -44px;
     left: -42px;
     rotate: 40deg;
+    opacity: 0.95;
 }
     body #maruayOuterBody .blanket:after {
         content: "";
