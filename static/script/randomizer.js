@@ -449,7 +449,7 @@ function putEmptyBottles() {
 }
 
 function getBottleHtml(top, right, i) {
-    var text = "HANDSOME<3";
+    var text = "HANDSOME♡";
     var bottleHtml =
         '<div style="top: ' + top + 'px; right: ' + right + 'px">' +
             "<span>" + text.charAt(i) +"</span>" +
@@ -458,7 +458,7 @@ function getBottleHtml(top, right, i) {
 }
 
 function putEmptyBottlesRecursive(top, right, i) {
-    if (i >= "HANDSOME<3".length) {
+    if (i >= "HANDSOME♡".length) {
         return;
     }
 
