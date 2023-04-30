@@ -9,7 +9,7 @@
     display: grid;
     grid-auto-flow: column;
     justify-content: center;
-    grid-gap: 80px;
+    grid-gap: 65px;
 }
 
 .rippleNum {
@@ -22,6 +22,7 @@
     animation-fill-mode: forwards;
     transform: scale(0);
     opacity: 0;
+    padding: 10px;
 }
 
 #rippleNum1, #rippleNum3, #rippleNum5, #rippleNum7, #rippleNum9 {
