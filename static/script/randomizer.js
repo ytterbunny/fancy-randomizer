@@ -421,10 +421,6 @@ function putMainTakoToSleep() {
 // Drink idle animation
 // ------------------------------------------------------------------------------------------------
 function startDrinkTako() {
-    saveNumPositions();
-    $("#idleDrinkOuter").css("top", numPosition[3].position.top-246);
-    $("#idleDrinkOuter").css("left", numPosition[3].position.left+30);
-
     $("#idleDrinkOuter").fadeIn();
     addAnimationClass(".idleDrinkBody.face .arms .arm1", "drinkArmSwayRight");
     addAnimationClass(".idleDrinkBody.face .arms .arm2", "drinkArmSwayRight");
@@ -435,4 +431,8 @@ function startDrinkTako() {
     addAnimationClass(".idleDrinkBody.face .whiskyGlass", "glassCheer");
     addAnimationClass(".idleDrinkBody.face .arms .arm6", "drinkArmCheer");
     addAnimationClass(".idleDrinkBody.face .blushes", "faceBlushing");
+
+    console.log("chaeyoungggg");
+    $("#chaeyoungOuterBody").fadeIn();
+    addAnimationClass("#chaeyoungOuterBody", "sleeping");
 }
