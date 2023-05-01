@@ -5,11 +5,11 @@ var delay = 1200;
 var soloDelay = 350;
 var glowDelay = 800;
 var idleTime = 60;
-var drinkTime = 90;
-var readTime = 110;
-var toSleepDuration = 62;
-var toDrinkEmptyDuration = 60;
-var toBookDuration = 60;
+var drinkTime = 75;
+var readTime = 90;
+var toSleepDuration = 31;
+var toDrinkEmptyDuration = 30;
+var toBookDuration = 30;
 
 
 // ------------------------------------------------------------------------------------------------
@@ -398,6 +398,11 @@ function resetIdleAnimation() {
         clearTimeout(value);
     });
     setTimeoutList = new Array();
+
+    $("#letterStack1").fadeOut();
+    $("#letterStack2").fadeOut();
+    $("#letterStack3").fadeOut();
+    $("#letterStack4").fadeOut();
 }
 
 function addAnimationClass(selector, className) {
@@ -503,7 +508,9 @@ function putEmptyBottlesRecursive(top, right, i) {
 // ------------------------------------------------------------------------------------------------
 function startReadTako() {
     $(".documentStack").text("");
+    $(".loveLetter").hide();
     $("#idleReadOuter").fadeIn();
+    addAnimationClass(".idleReadBody.face .arms .arm1", "drinkArmSwayRight");
     addAnimationClass(".idleReadBody.face .arms .arm2", "drinkArmSwayRight");
     addAnimationClass(".idleReadBody.face .arms .arm3", "drinkArmSwayRight");
     addAnimationClass(".idleReadBody.face .arms .arm4", "drinkArmSwayRight");
@@ -519,12 +526,12 @@ function putBooks() {
     var baseTop = -17;
     var baseRight = -53;
 
-    putBookRecursive(baseTop, baseRight, 0)
+    putBookRecursive(baseTop, baseRight, 0);
 }
 
 function getBookHtml(top, right, i) {
     var text = "ROHL";
-    var colors = ["#492f92", "#795cb5", "#8d51ae", "#733575"];
+    var colors = ["#5734b8", "#845dd3", "#9d4cca", "#952399"];
     var bookHtml =
         '<div style="top: ' + top + 'px; right: ' + right + 'px; background-color: ' + colors[i] + ';">' +
             "<span>" + text.charAt(i) +"</span>" +
@@ -534,6 +541,7 @@ function getBookHtml(top, right, i) {
 
 function putBookRecursive(top, right, i) {
     if (i >= "LHOR".length) {
+        putLoveLetters();
         return;
     }
 
@@ -542,4 +550,24 @@ function putBookRecursive(top, right, i) {
     setTimeoutList.push(setTimeout(function() {
         putBookRecursive(top-15, right, i+1)
     }, toBookDuration*1000))
+}
+
+function putLoveLetters() {
+    console.log("lillyyyyyy");
+    $(".loveLetter").fadeIn();
+    $("#lillyOuterBody").fadeIn();
+    addAnimationClass("#lillyOuterBody", "sleeping");
+
+    setTimeoutList.push(setTimeout(function() {
+        $("#letterStack1").fadeIn();
+    }, toBookDuration*1000))
+    setTimeoutList.push(setTimeout(function() {
+        $("#letterStack2").fadeIn();
+    }, toBookDuration*1000*2))
+    setTimeoutList.push(setTimeout(function() {
+        $("#letterStack3").fadeIn();
+    }, toBookDuration*1000*3))
+    setTimeoutList.push(setTimeout(function() {
+        $("#letterStack4").fadeIn();
+    }, toBookDuration*1000*4))
 }
