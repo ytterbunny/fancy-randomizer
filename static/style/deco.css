@@ -32,9 +32,15 @@
     right: 0px;
 }
 
-.starWheel {
+.starWheelOuter {
     position: fixed;
     z-index: -10;
+    border-radius: 50%;
+    width: calc(100%);
+    height: calc(100%);
+}
+.starWheel {
+    position: fixed;
     border-radius: 50%;
 }
 

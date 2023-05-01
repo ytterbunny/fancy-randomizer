@@ -23,6 +23,7 @@ var prevSeconds = 0;
 var onIdle = false;
 var randomClickWhenIdle = false;
 var animationClasses = new Set();
+var setTimeoutList = new Array();
 
 
 // ------------------------------------------------------------------------------------------------
@@ -360,7 +361,7 @@ function stopIdleAnimation() {
         $(".followBody").css("top", "calc(50% - 30px)");
     }
 
-    $("#resultLabel").css("opacity", 1);
+    setOpacityAndBlur(1, 0);
     setPointerAnimation("running");
     trackMouseMove();
     onIdle = false;
@@ -381,7 +382,7 @@ function startIdleAnimation() {
     $("#idleMainOuter").fadeIn()
     $(".miniTakoOuter").hide();
     $(".miniTakoOuter").css("visibility", "visible");
-    $("#resultLabel").css("opacity", 0.3);
+    setOpacityAndBlur(0.3, 2)
 
     /* start real idle animate here */
     startMainTako();
@@ -390,14 +391,29 @@ function startIdleAnimation() {
 function resetIdleAnimation() {
     animationClasses.forEach (function(value) {
         $("." + value).removeClass(value);
-    })
-
+    });
     animationClasses.clear();
+
+    setTimeoutList.forEach (function(value) {
+        clearTimeout(value);
+    });
+    setTimeoutList = new Array();
 }
 
 function addAnimationClass(selector, className) {
     $(selector).addClass(className);
     animationClasses.add(className);
+}
+
+function setOpacityAndBlur(opaValue, blur) {
+    $("#resultLabel").css("opacity", opaValue);
+    $("#numListOuter").css("opacity", opaValue);
+    $("#starWheelOuter").css("opacity", opaValue);
+
+    var blurStr = "blur(" + blur + "px)";
+    $("#resultLabel").css("filter", blurStr);
+    $("#numListOuter").css("filter", blurStr);
+    $("#starWheelOuter").css("filter", blurStr);
 }
 
 
@@ -416,18 +432,19 @@ function startMainTako() {
 function putMainTakoToSleep() {
     $(".idleMainBody.face .inner .eyelid").removeClass("eyesBlink");
     addAnimationClass(".idleMainBody.face .inner .eyelid", "eyeSleep");
-    setTimeout(function() {
+
+    setTimeoutList.push(setTimeout(function() {
         $(".idleMainBody.face .inner .eyelid").removeClass("eyeSleep");
         addAnimationClass(".idleMainBody.face .inner .eyelid", "lidSleeping");
         addAnimationClass(".idleMainBody.face .inner .mouth", "sleeping");
         addAnimationClass(".idleMainBody.face .inner .glasses", "sleeping");
         addAnimationClass(".idleMainBody.face .zzz", "zzzSleeping");
-    }, 3000)
-    setTimeout(function() {
+    }, 3000))
+    setTimeoutList.push(setTimeout(function() {
         console.log("maruayyyy");
         $("#maruayOuterBody").fadeIn();
         addAnimationClass("#maruayBody", "sleeping");
-    }, 12000)
+    }, 12000))
 }
 
 
@@ -475,9 +492,9 @@ function putEmptyBottlesRecursive(top, right, i) {
 
     var bottle = getBottleHtml(top, right, i);
     $(".emptyBottles").append(bottle);
-    setTimeout(function() {
+    setTimeoutList.push(setTimeout(function() {
         putEmptyBottlesRecursive(top, right-20, i+1)
-    }, toDrinkEmptyDuration*1000)
+    }, toDrinkEmptyDuration*1000))
 }
 
 
@@ -522,7 +539,7 @@ function putBookRecursive(top, right, i) {
 
     var book = getBookHtml(top, right, i);
     $(".documentStack").append(book);
-    setTimeout(function() {
+    setTimeoutList.push(setTimeout(function() {
         putBookRecursive(top-15, right, i+1)
-    }, toBookDuration*1000)
+    }, toBookDuration*1000))
 }
