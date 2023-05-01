@@ -30,6 +30,11 @@ body .idleDrinkBody {
         filter: blur(5px);
     }
 
+body .idleDrinkBody .tmpTakoBody {
+    left: 0;
+    top: 3;
+}
+
 body .idleDrinkBody.face .arms {
     width: 80px;
     height: 10px;
@@ -272,7 +277,7 @@ body .idleDrinkBody.face .inner .ears {
     height: 15px;
     background: #a690d2;
     border-radius: 50%;
-    top: 4px;
+    top: 3px;
     left: 1px;
     box-shadow: 40px 0 0 #a690d2;
 }

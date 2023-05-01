@@ -6,8 +6,10 @@ var soloDelay = 350;
 var glowDelay = 800;
 var idleTime = 60;
 var drinkTime = 90;
+var readTime = 110;
 var toSleepDuration = 62;
 var toDrinkEmptyDuration = 60;
+var toBookDuration = 60;
 
 
 // ------------------------------------------------------------------------------------------------
@@ -50,6 +52,15 @@ function timerIncrement() {
     }
     if (currSeconds == (drinkTime + toDrinkEmptyDuration)) {
         putEmptyBottles();
+    }
+
+    /* Reading tako */
+    if (currSeconds == readTime) {
+        // start main idle animation
+        startReadTako();
+    }
+    if (currSeconds == (readTime + toBookDuration)) {
+        putBooks();
     }
 
     /* Stop Idle */
@@ -467,4 +478,51 @@ function putEmptyBottlesRecursive(top, right, i) {
     setTimeout(function() {
         putEmptyBottlesRecursive(top, right-20, i+1)
     }, toDrinkEmptyDuration*1000)
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// Read idle animation
+// ------------------------------------------------------------------------------------------------
+function startReadTako() {
+    $(".documentStack").text("");
+    $("#idleReadOuter").fadeIn();
+    addAnimationClass(".idleReadBody.face .arms .arm2", "drinkArmSwayRight");
+    addAnimationClass(".idleReadBody.face .arms .arm3", "drinkArmSwayRight");
+    addAnimationClass(".idleReadBody.face .arms .arm4", "drinkArmSwayRight");
+    addAnimationClass(".idleReadBody.face .arms .arm5", "drinkArmSwayRight");
+    addAnimationClass(".idleReadBody.face .inner .eyelid", "eyesBlink");
+
+    console.log("pierreeeee");
+    $("#pierreOuterBody").fadeIn();
+    addAnimationClass("#pierreOuterBody", "floating");
+}
+
+function putBooks() {
+    var baseTop = -17;
+    var baseRight = -53;
+
+    putBookRecursive(baseTop, baseRight, 0)
+}
+
+function getBookHtml(top, right, i) {
+    var text = "ROHL";
+    var colors = ["#492f92", "#795cb5", "#8d51ae", "#733575"];
+    var bookHtml =
+        '<div style="top: ' + top + 'px; right: ' + right + 'px; background-color: ' + colors[i] + ';">' +
+            "<span>" + text.charAt(i) +"</span>" +
+        "</div>";
+    return bookHtml;
+}
+
+function putBookRecursive(top, right, i) {
+    if (i >= "LHOR".length) {
+        return;
+    }
+
+    var book = getBookHtml(top, right, i);
+    $(".documentStack").append(book);
+    setTimeout(function() {
+        putBookRecursive(top-15, right, i+1)
+    }, toBookDuration*1000)
 }
