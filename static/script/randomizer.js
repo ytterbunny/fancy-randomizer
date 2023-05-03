@@ -8,6 +8,7 @@ var idleTime = 60;
 var drinkTime = 75;
 var readTime = 90;
 var perfumeTime = 105;
+var cultTime = 120;
 var toSleepDuration = 31;
 var toDrinkEmptyDuration = 20;
 var toBookDuration = 20;
@@ -66,6 +67,11 @@ function timerIncrement() {
     /* Perfume tako */
     if (currSeconds == perfumeTime) {
         startPerfumeTako();
+    }
+
+    /* Cult tako */
+    if (currSeconds == cultTime) {
+        startCultTako();
     }
 
     /* Stop Idle */
@@ -607,3 +613,31 @@ function startPerfumeTako() {
     addAnimationClass("#elizabethOuterBody", "runningAround");
     addAnimationClass(".wink", "winking");
 }
+
+
+// ------------------------------------------------------------------------------------------------
+// Cult idle animation
+// ------------------------------------------------------------------------------------------------
+function startCultTako() {
+    $(".logo img").attr("src", "static/img/logo-small.PNG");
+    $("#idleCultOuter").fadeIn();
+    addAnimationClass(".idleCultBody", "cultFloatUp");
+    addAnimationClass(".idleCultBody.face .arms .arm1", "cultFloatLeft1");
+    addAnimationClass(".idleCultBody.face .arms .arm2", "cultFloatLeft2");
+    addAnimationClass(".idleCultBody.face .arms .arm3", "cultFloatLeft3");
+    addAnimationClass(".idleCultBody.face .arms .arm4", "cultFloatRight3");
+    addAnimationClass(".idleCultBody.face .arms .arm5", "cultFloatRight2");
+    addAnimationClass(".idleCultBody.face .arms .arm6", "cultFloatRight1");
+
+    addAnimationClass(".backArmsLeft1", "cultFloatLeft1");
+    addAnimationClass(".backArmsLeft2", "cultFloatLeft2");
+    addAnimationClass(".backArmsLeft", "cultFloatLeft3");
+    addAnimationClass(".backArmsRight3", "cultFloatRight3");
+    addAnimationClass(".backArmsRight2", "cultFloatRight2");
+    addAnimationClass(".backArmsRight1", "cultFloatRight1");
+
+    addAnimationClass(".logo", "logoPump");
+    addAnimationClass(".logoEye", "logoEyeMove");
+    addAnimationClass(".circle", "cultCircleSpin");
+}
+
