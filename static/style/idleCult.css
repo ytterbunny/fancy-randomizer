@@ -272,6 +272,18 @@
     filter: blur(1px);
 }
 
+@keyframes eyeGlowingAni {
+    to {
+        transform: translateX(-1px) translateY(-1px);
+        width: 7px;
+        height: 12px;
+        filter: blur(2px);
+    }
+}
+.eyeGlowing {
+    animation: eyeGlowingAni 1000ms ease-in-out infinite alternate;
+}
+
 .idleCultBody.face .inner .ears {
     content: "";
     position: absolute;

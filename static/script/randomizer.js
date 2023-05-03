@@ -639,5 +639,6 @@ function startCultTako() {
     addAnimationClass(".logo", "logoPump");
     addAnimationClass(".logoEye", "logoEyeMove");
     addAnimationClass(".circle", "cultCircleSpin");
+    addAnimationClass(".eyeGlow", "eyeGlowing");
 }
 
