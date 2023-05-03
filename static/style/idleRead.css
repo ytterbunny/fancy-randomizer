@@ -573,7 +573,7 @@ body #lillyBody .inner .hair {
     position: absolute;
     width: 5px;
     height: 18px;
-    background-image: linear-gradient(to bottom, #9683bd, #7b67a3, #564e63);
+    background-image: linear-gradient(to bottom, #9683bd, #7b67a3, #1e1926);
     border-radius: 0px 0px 8px 0px;
     top: 8px;
     left: 3px;
@@ -584,7 +584,7 @@ body #lillyBody .inner .hair {
         position: absolute;
         width: 7px;
         height: 21px;
-        background-image: linear-gradient(to bottom, #9683bd, #564e63);
+        background-image: linear-gradient(to bottom, #9683bd, #1e1926);
         border-radius: 0px 0px 0px 8px;
         top: 3px;
         left: 7px;

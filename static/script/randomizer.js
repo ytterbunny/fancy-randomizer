@@ -7,9 +7,10 @@ var glowDelay = 800;
 var idleTime = 60;
 var drinkTime = 75;
 var readTime = 90;
+var perfumeTime = 105;
 var toSleepDuration = 31;
-var toDrinkEmptyDuration = 30;
-var toBookDuration = 30;
+var toDrinkEmptyDuration = 20;
+var toBookDuration = 20;
 
 
 // ------------------------------------------------------------------------------------------------
@@ -48,7 +49,6 @@ function timerIncrement() {
 
     /* Drinking tako */
     if (currSeconds == drinkTime) {
-        // start main idle animation
         startDrinkTako();
     }
     if (currSeconds == (drinkTime + toDrinkEmptyDuration)) {
@@ -57,11 +57,15 @@ function timerIncrement() {
 
     /* Reading tako */
     if (currSeconds == readTime) {
-        // start main idle animation
         startReadTako();
     }
     if (currSeconds == (readTime + toBookDuration)) {
         putBooks();
+    }
+
+    /* Perfume tako */
+    if (currSeconds == perfumeTime) {
+        startPerfumeTako();
     }
 
     /* Stop Idle */
@@ -570,4 +574,36 @@ function putLoveLetters() {
     setTimeoutList.push(setTimeout(function() {
         $("#letterStack4").fadeIn();
     }, toBookDuration*1000*4))
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// Perfume idle animation
+// ------------------------------------------------------------------------------------------------
+function startPerfumeTako() {
+    $("#idlePerfumeOuter").fadeIn();
+    addAnimationClass(".idlePerfumeBody.face .arms .arm2", "armSwayLeft");
+    addAnimationClass(".idlePerfumeBody.face .arms .arm3", "armSwayLeft");
+    addAnimationClass(".idlePerfumeBody.face .arms .arm4", "armSwayLeft");
+    addAnimationClass(".idlePerfumeBody.face .arms .arm5", "armSwayRight");
+    addAnimationClass(".idlePerfumeBody.face .arms .arm6", "armSwayRightWithSomsri");
+    addAnimationClass(".idlePerfumeBody.face .inner .eyelid", "eyesBlink");
+
+    console.log("somsriiii");
+    $("#somsriOuterBody").fadeIn();
+    addAnimationClass("#somsriOuterBody", "somsriSway");
+
+    console.log("susann <3");
+    $("#susanOuterBody").fadeIn();
+    addAnimationClass("#susanOuterBody", "floating");
+    addAnimationClass(".perfumeSpray", "perfumeSpraying");
+
+    console.log("cookieee");
+    $("#cookieOuterBody").fadeIn();
+    addAnimationClass("#cookieOuterBody", "sleeping");
+
+    console.log("elizabethhh");
+    $("#elizabethOuterBody").fadeIn();
+    addAnimationClass("#elizabethOuterBody", "runningAround");
+    addAnimationClass(".wink", "winking");
 }
