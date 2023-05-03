@@ -389,3 +389,93 @@
         transform: translateY(-350px);
     }
 }
+
+
+
+
+.infoBannerOuter {
+    position: fixed;
+    top: 20px;
+    right: -310px;
+    height: 500px;
+    width: 350px;
+    z-index: 28;
+}
+
+.infoBannerOuter > span {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    height: 30px;
+    width: 30px;
+    background: #5c4940;
+    border-radius: 10px 0px 0px 10px;
+    cursor:pointer;
+}
+    .gg-info {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        transform: scale(var(--ggs,1));
+        width: 20px;
+        height: 20px;
+        border: 2px solid;
+        border-radius: 40px;
+        margin: 5px;
+    }
+
+#howToLabel {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-gap: 10px;
+    align-items: end;
+    justify-items: center;
+    color: #9e8a71;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: #ccb693 2px solid;
+    width: 260px;
+    margin: 0 auto;
+}
+
+.infoDivOuter {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 520px;
+    width: 320px;
+    cursor:pointer;
+    background: white;
+}
+.infoDivContent {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    height: 100%;
+    width: 305;
+    cursor:pointer;
+    background: white;
+    color: #9e8a71;
+}
+.infoDivContent > ul {
+    text-align: left;
+}
+
+@keyframes openInfo {
+    from {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(-310px);
+    }
+}
+
+@keyframes closeInfo {
+    from {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(310px);
+    }
+}

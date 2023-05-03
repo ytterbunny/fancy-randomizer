@@ -25,6 +25,28 @@ $("#bookmark").click(function() {
             $("#resultListOuter").css("animation-duration", "none");
         }, 1200)
     }
+});
 
 
+$(".infoBannerOuter > span, .infoBannerOuter > .infoDivOuter").click(function() {
+    if (!$(".infoBannerOuter").hasClass("infoOpen")) {
+        $(".infoBannerOuter").addClass("infoOpen");
+        $(".infoBannerOuter").css("animation", "openInfo 1200ms ease-in");
+
+        setTimeout(function() {
+            $(".infoBannerOuter").css("right", "0px");
+            $(".infoBannerOuter").css("animation-name", "none");
+            $(".infoBannerOuter").css("animation-duration", "none");
+        }, 1200)
+    }
+    else {
+        $(".infoBannerOuter").removeClass("infoOpen");
+        $(".infoBannerOuter").css("animation", "closeInfo 1200ms ease-in");
+
+        setTimeout(function() {
+            $(".infoBannerOuter").css("right", "-310px");
+            $(".infoBannerOuter").css("animation-name", "none");
+            $(".infoBannerOuter").css("animation-duration", "none");
+        }, 1200)
+    }
 });
